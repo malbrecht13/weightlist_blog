@@ -1,0 +1,17 @@
+{{>header}}
+<main>
+    <h2 class="text-center">{{title}}</h2>
+
+    <div class="flex-col">
+        <div class="form_item flex-col">
+            <label for="edit_post_title"><h4>Post title</h4></label>
+            <input type="text" id="edit_post_title"/>
+        </div>
+        <div class="form_item flex-col">
+            <label for="edit_post_title"><h4>Post body</h4></label>
+            <textarea rows="15"></textarea>   
+        </div>
+        <a href="/admin/edit"><button class="save-btn btn btn-primary">Save <i class="fas fa-save"></i></button></a>
+    </form>
+</main>
+{{>footer}}

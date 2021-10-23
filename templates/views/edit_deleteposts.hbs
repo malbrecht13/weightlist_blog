@@ -1,0 +1,24 @@
+{{>header}}
+<main>
+    <h3 class="text-center">{{title}}</h3>
+    <table class="edit_posts">
+        <tr class="text-center">
+            <th><h4>Blog Post Title</h4></th>
+            <th><h4>Date</h4></th>
+            <th><h4>Actions</h4></th>
+        </tr>
+        {{#each posts}}
+        <tr class="edit_item_row">
+            <td><h6 class="text-center">{{this.title}}</h6></td>
+            <td><h6 class="text-center">{{this.dateCreated}}</h6></td>
+            <td>
+                <div class="flex-row btn-row">
+                    <a href={{concatEdit @index}}><button class="btn btn-primary">Edit <i class="fas fa-edit"></i></button></a>
+                    <a href=""><button class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></button></a>
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</main>
+{{>footer}}

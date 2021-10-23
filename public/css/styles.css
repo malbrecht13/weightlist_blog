@@ -1,0 +1,216 @@
+/* global styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 13px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+main {
+    min-height: 80vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*utility styles*/
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.readable_font {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* header/heading styles*/
+header {
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0E0C50;
+    color: white;
+    min-height: 100px;
+    max-height: 150px;
+    padding: 5%;
+}
+
+.weightlist_icon {
+    width: 15%;
+    height: 15%;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pacifico', cursive;
+}
+
+.btn {
+    font-size: 1.0rem;
+    line-height: 0.5;
+}
+
+/* navigation styles */
+#main_nav_top {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    color: white;
+}
+
+.header-right-nav-list {
+    align-items: center;
+    background-color: #0E0C50;
+    padding-right: 20px;
+}
+
+.nav_link {
+    list-style-type: none;
+}
+
+li {
+    font-size: 1rem;
+    padding: 10px;
+    height: 45px;
+}
+
+#hamburger-icon {
+    font-size: 2rem;
+}
+
+.nav_link_div {
+    background-color: #0E0C50;
+    color: white;
+}
+
+/* index page */
+.post_list_item {
+    font-family: 'Arial', 'Helvetica', sans-serif
+}
+
+.blog_post_list {
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 20%;
+}
+
+.blog_post_title {
+    margin-right: 20px;
+}
+
+.blog_title_link, .post_list_item {
+    color: black;
+}
+
+.logo >a:hover {
+    color: white;
+}
+
+.page-title {
+    margin: 20px 20%;
+}
+
+/* Admin */
+table {
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+.edit_posts {
+    margin-top: 20px;
+}
+
+.btn-row {
+    margin-left: 10px;
+    justify-content: space-evenly;
+}
+
+.form_item {
+    margin-top: 20px;
+}
+
+.save-btn, #login-btn {
+    margin-top: 20px;
+    padding: 10px;
+    max-width: 100px;
+    font-size: 1.2rem;
+    background-color: #0E0C50 !important;
+}
+
+.login_link:hover {
+    color:white;
+}
+
+.login_form {
+    margin: 30px auto;
+}
+
+.login_input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    #main_nav_top {
+        display: inline-block;
+        font-size: 2rem;
+    }
+
+    #hamburger-icon {
+        display: none;
+    }
+
+    .header-right-nav-list {
+        flex-direction: row;
+        align-self: center;
+        font-size: 3rem;
+    }
+
+    .nav_link_div:hover {
+        color: white;
+        
+    }
+}
