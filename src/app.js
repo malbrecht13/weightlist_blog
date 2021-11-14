@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const fs = require('fs/promises');
+require('./models/db');
 const PORT = process.env.PORT || 3000;
 
 const publicPath = path.join(__dirname, '../public');
