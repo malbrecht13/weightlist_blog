@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
+const { MongoClient} = require('mongodb');
 const readline = require('readline');
 
 let dbURI = 'mongodb://localhost/weightblog';
 if(process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGODB_URI;
+  const client = new MongoClient(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
 }
-mongoose.connect(dbURI, {useNewUrlParser: true});
+
 
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose connected to ${dbURI}`)
