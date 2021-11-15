@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const readline = require('readline');
 
-const dbURI = 'mongodb://localhost/weightblog';
+let dbURI = 'mongodb://localhost/weightblog';
+if(process.env.NODE_ENV === 'production') {
+  dbURI = process.env.MONGODB_URI;
+}
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
 mongoose.connection.on('connected', () => {
