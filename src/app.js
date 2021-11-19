@@ -3,8 +3,10 @@ const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const fs = require('fs/promises');
-require('./models/db');
+require('../app_api/models/db');
 const PORT = process.env.PORT || 3000;
+
+const apiRouter = require('../app_api/routes/index');
 
 const publicPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -26,7 +28,11 @@ hbs.registerHelper( 'concatEdit', function(path) {
     return 'edit/' + num;
 });
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(express.static(publicPath));
+app.use('/api', apiRouter);
+
 
 //Routes
 app.get('/', async (req,res) => {

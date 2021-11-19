@@ -5,12 +5,13 @@ const readline = require('readline');
 let dbURI = 'mongodb://localhost/weightblog';
 if(process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGODB_URI;
-  const client = new MongoClient(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-  client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-});
+  mongoose.connect(dbURI).catch(err => console.log(err));
+//   const client = new MongoClient(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+//   client.connect(err => {
+//     const collection = client.db("test").collection("devices");
+//     // perform actions on the collection object
+//     client.close();
+// });
 }
 
 
