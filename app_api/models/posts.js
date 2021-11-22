@@ -8,6 +8,10 @@ const postSchema = mongoose.Schema({
   body: {
     type: String,
     required: true
+  },
+  updatedAt: {
+    type: Date,
+    required: false
   }
 });
 

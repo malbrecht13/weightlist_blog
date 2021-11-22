@@ -7,6 +7,7 @@ require('../app_api/models/db');
 const PORT = process.env.PORT || 3000;
 
 const apiRouter = require('../app_api/routes/index');
+const appRouter = require('./routes/index');
 
 const publicPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -32,24 +33,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(publicPath));
 app.use('/api', apiRouter);
+app.use('/', appRouter);
 
 
 //Routes
-app.get('/', async (req,res) => {
-    try {
-        const jsonPath = '../public/json/posts.json';
-        const posts = await fs.readFile(require.resolve(jsonPath));
-        const parsedPosts = JSON.parse(posts);
-        res.render('index', {
-            title: 'Weightlist Blog',
-            navitems: publicBlogLinks,
-            posts: parsedPosts,
-        });
-    } catch(e) {
-        console.log(e);
-    }
-    
-});
+
 
 app.get('/posts/:id', async (req,res) => {
     try {

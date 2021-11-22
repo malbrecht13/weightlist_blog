@@ -1,0 +1,22 @@
+<header class="flex-row">
+  <div class="logo">
+      <a href="/" class="flex-row">
+          <h1 class="weightlist-blog-text">Weightlist Blog</h1>
+          <img class="weightlist_icon" src="../../assets/img/weightlist_icon.png" alt="Weightlist icon"/>
+      </a>
+  </div>
+
+  <div id="main_nav_top" class="display-none" [ngClass]="{'display-block': areHamburgerLinksVisible }">
+      <ul class="header-right-nav-list flex-col" *ngFor="let link of publicBlogLinks">
+        <a class="nav_link_div" [routerLink]="link.href" (click)="clickedHamburger()">
+          <li class="nav_link" >
+            {{link.linkName}}
+          </li>
+        </a>
+      </ul>
+  </div>
+
+  <fa-icon id="hamburger-icon" [icon]="faBars" (click)="clickedHamburger()"></fa-icon>
+
+  
+</header>

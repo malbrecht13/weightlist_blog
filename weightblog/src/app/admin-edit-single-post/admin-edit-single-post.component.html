@@ -1,0 +1,13 @@
+<main class="container">
+  <h2 class="text-center">Edit Post</h2>
+  <form>
+  <div class="flex-col">
+      <div class="form_item flex-col">
+          <label for="edit_post_title"><h4>Post title</h4></label>
+          <input type="text" id="edit_post_title" value="{{title}}"/>
+      </div>
+      <div class="form_item flex-col">
+          <label for="edit_post_title"><h4>Post body</h4></label>
+          <textarea rows="15">{{body}}</textarea>   
+      </div>
+      <button id="save-edited-post-btn" class="save-btn btn btn-primary" routerLink="/admin/edit">Save <fa-icon [icon]="faSave"></fa-icon></button>
