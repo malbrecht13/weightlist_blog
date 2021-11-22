@@ -16,9 +16,15 @@ const createPost = (req, res) => {
 };
 
 const getPosts = (req, res) => {
-  res
+  postModel.find()
+    .exec((err,posts) => {
+      if(!posts) return res.status(404).json({"message": "Posts not found"});
+      else if(err) return res.status(400).json(err);
+      res
     .status(200)
-    .json({"status": "successfully received posts"});
+    .json(posts);
+    })
+  
 };
 
 // belong to /posts/:postId
