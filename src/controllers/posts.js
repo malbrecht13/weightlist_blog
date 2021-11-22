@@ -18,15 +18,14 @@ const renderPosts = async (req,res) => {
     try {
         const response = await axios.get(url);
         const json = await response.data;
-        console.log(json);
         // const jsonPath = '../../public/json/posts.json';
         // const posts = await fs.readFile(require.resolve(jsonPath));
         // const parsedPosts = JSON.parse(posts);
-        // res.render('index', {
-        //     title: 'Weightlist Blog',
-        //     navitems: publicBlogLinks,
-        //     posts: parsedPosts,
-        // });
+        res.render('index', {
+            title: 'Weightlist Blog',
+            navitems: publicBlogLinks,
+            posts: json,
+        });
     } catch(e) {
         console.log(e);
     }
