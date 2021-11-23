@@ -16,6 +16,14 @@ export class HeaderComponent implements OnInit {
     {href: 'admin/login', linkName: 'Admin Login'}
   ];
 
+  adminLinks = [
+    {href: '/admin/add', linkName: 'Add Post'}, 
+    {href: '/admin/edit', linkName: 'Edit Posts'}, 
+    {href: '/admin/login', linkName: 'Sign Out'}
+  ];
+
+  navLinks: any;
+
   faBars = faBars;
 
   constructor(private router: Router) { }
@@ -24,8 +32,15 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd) {
         this.areHamburgerLinksVisible = false;
+        console.log(this.router.url);
+        if(this.router.url.search(/admin/) !== -1) {
+          this.navLinks = this.adminLinks;
+        } else {
+          this.navLinks = this.publicBlogLinks;
+        }
       }
     })
+    
   }
 
   clickedHamburger():void {

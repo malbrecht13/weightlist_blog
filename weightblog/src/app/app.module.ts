@@ -15,6 +15,7 @@ import { AdminEditSinglePostComponent } from './admin-edit-single-post/admin-edi
 import { AdminAddPostComponent } from './admin-add-post/admin-add-post.component';
 
 import { PostService } from './services/post.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PostService } from './services/post.service';
     AdminLoginComponent,
     AdminEditAllComponent,
     AdminEditSinglePostComponent,
-    AdminAddPostComponent
+    AdminAddPostComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
