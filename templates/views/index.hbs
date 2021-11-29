@@ -5,13 +5,13 @@
         <div class="blog_post_title">
             <h4 class="post_list_heading">Blog Post Title</h4>
             {{#each posts}}
-                <a href={{concat @index}} class="blog_title_link"><h5 class="post_list_item">{{this.title}}</h5></a>
+                <a href={{concat @index}} class="blog_title_link"><h5 class="post_list_item">{{this.title}} T</h5></a>
             {{/each}}
         </div>
         <div class="blog_post_date">
             <h4 class="post_list_heading">Date Posted</h4>
             {{#each posts}}
-            <h5 class="post_list_item">{{this.dateCreated}}</h5>
+            <h5 class="post_list_item">{{this.dateCreated}} Date</h5>
             {{/each}}
         </div>       
     </section>

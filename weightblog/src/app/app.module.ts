@@ -13,6 +13,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminEditAllComponent } from './admin-edit-all/admin-edit-all.component';
 import { AdminEditSinglePostComponent } from './admin-edit-single-post/admin-edit-single-post.component';
 import { AdminAddPostComponent } from './admin-add-post/admin-add-post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PostService } from './services/post.service';
 import { FooterComponent } from './footer/footer.component';
@@ -34,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

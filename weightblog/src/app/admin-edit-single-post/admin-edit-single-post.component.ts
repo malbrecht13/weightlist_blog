@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { Post } from '../models/Post';
 
 @Component({
   selector: 'app-admin-edit-single-post',
@@ -14,7 +15,7 @@ export class AdminEditSinglePostComponent implements OnInit {
   body: string = '';
   dateCreated: string = '';
   id: number = 0;
-  post: any = {};
+  post: any;
 
   faSave = faSave;
 
@@ -24,7 +25,11 @@ export class AdminEditSinglePostComponent implements OnInit {
     this.route.params.subscribe(param => {
       this.id = parseInt(param['id']);
     });
-    this.post = this.postService.getAllPosts()[this.id];
+    this.postService.getAllPosts().subscribe({
+      next: posts => {
+        this.post= posts[this.id];
+      }
+    });
     this.title = this.post.title;
     this.body = this.post.body;
     this.dateCreated = this.post.dateCreated;

@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
         console.log(this.router.url);
         if(this.router.url.search(/admin/) !== -1) {
           this.navLinks = this.adminLinks;
+          this.adminLinks[2].linkName = this.router.url === '/admin/login' ? 'Admin Login' : 'Sign Out';
         } else {
           this.navLinks = this.publicBlogLinks;
         }

@@ -16,15 +16,16 @@ const renderPosts = async (req,res) => {
     const path = '/api/posts';
     const url = `${apiOptions.server}${path}`;
     try {
+        let data = [];
         const response = await axios.get(url);
-        const json = await response.data;
-        // const jsonPath = '../../public/json/posts.json';
-        // const posts = await fs.readFile(require.resolve(jsonPath));
-        // const parsedPosts = JSON.parse(posts);
+        const status = await response.status;
+        if(status === 200) {
+          data = await response.data;
+        }
         res.render('index', {
             title: 'Weightlist Blog',
             navitems: publicBlogLinks,
-            posts: json,
+            posts: data,
         });
     } catch(e) {
         console.log(e);
