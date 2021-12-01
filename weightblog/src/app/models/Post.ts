@@ -1,6 +1,5 @@
 export interface Post {
   _id: string,
   title: string,
-  body: string,
-  dateCreated: Date
+  body: string
 }

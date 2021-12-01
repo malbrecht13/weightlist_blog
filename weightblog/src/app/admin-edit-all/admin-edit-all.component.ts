@@ -12,7 +12,18 @@ export class AdminEditAllComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts = this.postService.getAllPosts();
+    this.postService.getAllPosts().subscribe({
+      next: posts => {
+        this.posts = posts;
+      },
+      error: err => console.log(err)
+    });
   }
+
+  dateFromObjectId(objectId: string): string {
+    const date = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
+    const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+    return `${month}/${day}/${year}`;
+  };
 
 }

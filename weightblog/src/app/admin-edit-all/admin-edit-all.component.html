@@ -1,17 +1,17 @@
 <main>
   <h3 class="text-center">Edit/Delete Posts</h3>
-  <table class="edit_posts">
+  <table class="edit_posts" *ngIf="posts">
       <tr class="text-center">
           <th><h4>Blog Post Title</h4></th>
           <th><h4>Date</h4></th>
           <th><h4>Actions</h4></th>
       </tr>
       <tr class="edit_item_row" *ngFor="let post of posts">
-          <td><h6 class="text-center">{{post.title}}</h6></td>
-          <td><h6 class="text-center">{{post.dateCreated}}</h6></td>
+          <td><h6 class="text-center">{{post.title || '-'}}</h6></td>
+          <td><h6 class="text-center">{{dateFromObjectId(post._id)}}</h6></td>
           <td>
               <div class="flex-row btn-row">
-                  <button [routerLink]="['/admin/edit', post.id]" class="btn btn-primary">Edit <i class="fas fa-edit"></i></button>
+                  <button [routerLink]="['/admin/edit', post._id]" class="btn btn-primary">Edit <i class="fas fa-edit"></i></button>
                   <button class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></button>
               </div>
           </td>

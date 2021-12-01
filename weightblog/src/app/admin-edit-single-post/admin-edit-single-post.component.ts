@@ -14,7 +14,7 @@ export class AdminEditSinglePostComponent implements OnInit {
   title: string = '';
   body: string = '';
   dateCreated: string = '';
-  id: number = 0;
+  id: string = '';
   post: any;
 
   faSave = faSave;
@@ -23,16 +23,23 @@ export class AdminEditSinglePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
-      this.id = parseInt(param['id']);
+      this.id = param['id'];
     });
-    this.postService.getAllPosts().subscribe({
-      next: posts => {
-        this.post= posts[this.id];
-      }
+    this.postService.getSinglePost(this.id).subscribe({
+      next: post => {
+        this.post = post;
+        this.title = this.post.title;
+        this.body = this.post.body;
+        this.dateCreated = this.dateFromObjectId(this.post._id);
+      },
+      error: error => console.log(error)
     });
-    this.title = this.post.title;
-    this.body = this.post.body;
-    this.dateCreated = this.post.dateCreated;
   }
+
+  dateFromObjectId(objectId: string): string {
+    const date = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
+    const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+    return `${month}/${day}/${year}`;
+  };
 
 }

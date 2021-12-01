@@ -14,7 +14,7 @@ import { AdminEditAllComponent } from './admin-edit-all/admin-edit-all.component
 import { AdminEditSinglePostComponent } from './admin-edit-single-post/admin-edit-single-post.component';
 import { AdminAddPostComponent } from './admin-add-post/admin-add-post.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostService } from './services/post.service';
 import { FooterComponent } from './footer/footer.component';
 
@@ -30,13 +30,15 @@ import { FooterComponent } from './footer/footer.component';
     AdminEditAllComponent,
     AdminEditSinglePostComponent,
     AdminAddPostComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

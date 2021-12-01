@@ -22,13 +22,14 @@ export class IndividualPostComponent implements OnInit {
     this.route.params.subscribe(param => {
       this.id = param['id'];
     });
-    this.post = this.postService.getAllPosts().subscribe({
-      next: posts => {
-        this.post = posts.find(post => post._id === this.id);
+    this.postService.getSinglePost(this.id).subscribe({
+      next: post => {
+        this.post = post;
         this.title = this.post.title;
         this.body = this.post.body;
         this.dateCreated = this.dateFromObjectId(this.post._id);
-      }
+      },
+      error: err => console.log(err)
     });
     
   }

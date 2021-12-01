@@ -7,9 +7,10 @@ require('../app_api/models/db');
 const PORT = process.env.PORT || 3000;
 
 const apiRouter = require('../app_api/routes/index');
-const appRouter = require('./routes/index');
+// const appRouter = require('./routes/index');
 
 const publicPath = path.join(__dirname, '../public');
+const angularBuildPath = path.join(__dirname, '../weightblog', 'build');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 
@@ -31,14 +32,16 @@ hbs.registerHelper( 'concatEdit', function(path) {
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(publicPath));
+// app.use(express.static(publicPath));
+app.use(express.static(angularBuildPath));
 app.use('/api', (req,res,next) => {
+  res.header('Access-Control-Allow-Origin', 'https://shielded-bayou-85397.herokuapp.com/api/posts');
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 app.use('/api', apiRouter);
-app.use('/', appRouter);
+// app.use('/', appRouter);
 
 
 //Routes

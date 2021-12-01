@@ -16,7 +16,8 @@ export class AllPostsComponent implements OnInit {
     this.postService.getAllPosts().subscribe({
       next: posts => {
         this.postList = posts;
-      }
+      },
+      error: err => console.log(err)
     });
   }
 
@@ -24,7 +25,6 @@ export class AllPostsComponent implements OnInit {
     const date = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
     const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
     const stringDate = `${month}/${day}/${year}`;
-    console.log(stringDate);
     return stringDate;
   };
 

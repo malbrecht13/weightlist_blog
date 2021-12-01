@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-const postModel = mongoose.model('Post');
+const Post = mongoose.model('Post');
 
 
 // belong to /posts route
 const createPost = (req, res) => {
-  console.log(req.body.body);
   // modelName.create(dataToSave, callback)
-  postModel.create({
+  Post.create({
       title: req.body.title,
       body: req.body.body
     }, (err, post) => {
@@ -16,7 +15,7 @@ const createPost = (req, res) => {
 };
 
 const getPosts = (req, res) => {
-  postModel.find()
+  Post.find()
     .exec((err,posts) => {
       if(!posts) return res.status(404).json({"message": "Posts not found"});
       else if(err) return res.status(400).json(err);
@@ -27,7 +26,7 @@ const getPosts = (req, res) => {
 
 // belong to /posts/:postId
 const readOnePost = (req,res) => {
-  postModel
+  Post
     .findById(req.params.postId)
     // .select('title body date')  if this were implemented, would return only title, body, and date
     .exec((err,post) => {
@@ -50,7 +49,7 @@ const updatePost = (req, res) => {
   if(!req.params.postId) {
     return res.status(404).json({"message": "Post ID is required"});
   }
-  postModel.findById(req.params.postId)
+  Post.findById(req.params.postId)
     .exec((err, post) => {
       if(!post) {
         return res.status(404).json({"message": "postId not found"});
@@ -75,7 +74,7 @@ const deletePost = (req, res) => {
   if(!req.params.postId) {
     return res.status(404).json({"message": "postId is required"});
   } 
-  postModel.findByIdAndRemove(req.params.postId)
+  Post.findByIdAndRemove(req.params.postId)
     .exec((err, post) => {
       if(err) res.status(400).json(err);
       res.status(204).json(null);

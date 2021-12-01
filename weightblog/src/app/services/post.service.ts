@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
+import { environment } from '../../environments/environment';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +23,14 @@ export class PostService {
     return this.http.get<Post[]>(url);
   }
 
+  getSinglePost(id: string): Observable<Post> {
+    const url = `${this.apiBaseUrl}/posts/${id}`;
+    return this.http.get<Post>(url);
+  }
+
+  addPost(formData: any): Observable<any> {
+    const url: string = `${this.apiBaseUrl}/posts`;
+    return this.http.post<Post>(url, formData, httpOptions);
+  }
   
 }
