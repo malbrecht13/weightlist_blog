@@ -42,6 +42,9 @@ app.use('/api', (req,res,next) => {
 });
 app.use('/api', apiRouter);
 // app.use('/', appRouter);
+app.get('*', (req,res,next) => {
+  res.sendFile(path.join(__dirname, 'weightblog', 'build', 'index.html'));
+}
 
 
 //Routes
