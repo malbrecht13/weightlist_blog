@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
-import { Post } from '../models/Post';
 
 @Component({
   selector: 'app-admin-edit-single-post',
@@ -11,15 +10,19 @@ import { Post } from '../models/Post';
 })
 export class AdminEditSinglePostComponent implements OnInit {
 
-  title: string = '';
-  body: string = '';
-  dateCreated: string = '';
   id: string = '';
   post: any;
+  formError: string = '';
+
+  public editedPost = {
+    title: '',
+    body: '',
+    dateCreated: ''
+  };
 
   faSave = faSave;
 
-  constructor(private route: ActivatedRoute, private postService: PostService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
@@ -28,9 +31,9 @@ export class AdminEditSinglePostComponent implements OnInit {
     this.postService.getSinglePost(this.id).subscribe({
       next: post => {
         this.post = post;
-        this.title = this.post.title;
-        this.body = this.post.body;
-        this.dateCreated = this.dateFromObjectId(this.post._id);
+        this.editedPost.title = this.post.title;
+        this.editedPost.body = this.post.body;
+        this.editedPost.dateCreated = this.dateFromObjectId(this.post._id);
       },
       error: error => console.log(error)
     });
@@ -42,4 +45,31 @@ export class AdminEditSinglePostComponent implements OnInit {
     return `${month}/${day}/${year}`;
   };
 
+  private formIsValid(): boolean {
+    if(this.editedPost.title && this.editedPost.body) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  onEditPostSubmit(id: string): void {
+    this.formError = '';
+    if(this.formIsValid()) {
+      this.postService.editPost(this.editedPost, this.id).subscribe();
+      this.editedPost.title = '';
+      this.editedPost.body = '';
+      this.editedPost.dateCreated = '';
+      this.router.navigate(['admin/edit']);
+    } else {
+      this.formError = 'All fields required, please try again.';
+    }
+    this.removeMsg();
+  }
+
+  removeMsg(): void {
+    setTimeout(() => {
+      this.formError = '';
+    }, 10000); // remove error message after 10 seconds
+  }
 }

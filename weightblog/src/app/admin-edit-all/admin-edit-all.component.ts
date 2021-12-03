@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PostService } from '../services/post.service';
 export class AdminEditAllComponent implements OnInit {
   posts: any;
 
-  constructor(private postService: PostService) { }
+  constructor(private router: Router, private postService: PostService) { }
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe({
@@ -26,4 +27,13 @@ export class AdminEditAllComponent implements OnInit {
     return `${month}/${day}/${year}`;
   };
 
+  onDeleteBtnClick(id: string): void {
+    const confirmed = confirm('Are you sure you want to delete this post?');
+    if(confirmed) {
+      this.postService.deletePost(id).subscribe();
+      window.location.reload();
+    }
+  }
 }
+
+

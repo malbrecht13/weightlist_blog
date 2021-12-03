@@ -61,3 +61,4 @@ if(process.platform === 'win32') {
 }
 
 require('./posts');
+require('./user');

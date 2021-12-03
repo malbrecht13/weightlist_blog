@@ -32,5 +32,15 @@ export class PostService {
     const url: string = `${this.apiBaseUrl}/posts`;
     return this.http.post<Post>(url, formData, httpOptions);
   }
+
+  editPost(formData: any, id: string): Observable<any> {
+    const url: string = `${this.apiBaseUrl}/posts/${id}`;
+    return this.http.put<Post>(url, formData, httpOptions);
+  }
+
+  deletePost(id: string): Observable<any> {
+    const url: string = `${this.apiBaseUrl}/posts/${id}`;
+    return this.http.delete(url);
+  }
   
 }

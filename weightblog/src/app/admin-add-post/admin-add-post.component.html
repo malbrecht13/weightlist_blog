@@ -8,12 +8,12 @@
   </div>
   <form class="flex-col" (ngSubmit)="onAddPostSubmit()">
       <div class="form_item flex-col">
-          <label for="edit_post_title"><h4>Post title</h4></label>
-          <input [(ngModel)]="newPost.title" name="edit_post_title" type="text" id="edit_post_title"/>
+          <label for="add_post_title"><h4>Post title</h4></label>
+          <input [(ngModel)]="newPost.title" name="add_post_title" type="text" id="add_post_title"/>
       </div>
       <div class="form_item flex-col">
-          <label for="edit_post_title"><h4>Post body</h4></label>
-          <textarea [(ngModel)]="newPost.body" name="edit_post_body" rows="15"></textarea>   
+          <label for="add_post_body"><h4>Post body</h4></label>
+          <textarea [(ngModel)]="newPost.body" name="add_post_body" rows="15" id="add_post_body"></textarea>   
       </div>
       <button class="save-btn btn btn-primary" type="submit">Save <i class="fas fa-save"></i></button>
     </form>
