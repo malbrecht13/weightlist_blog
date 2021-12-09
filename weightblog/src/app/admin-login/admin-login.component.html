@@ -1,14 +1,17 @@
 <main>
   <h2 class="text-center">Weightlist Blog Administrator Login</h2>
-  <form class="login_form">
+  <div role="alert" *ngIf="formError" class="alert alert-danger">
+    {{ formError }}
+  </div>
+  <form class="login_form" (ngSubmit)="onLoginSubmit()">
       <div class="form-group">
           <label for="username"><h3>Username</h3></label>
-          <input type="text" id="username" class="form-control"/>
+          <input type="text" id="username" class="form-control" name="username" [(ngModel)]="credentials.email"/>
       </div>
       <div class="form-group">
           <label for="password"><h3>Password</h3></label>
-          <input type="password" id="password" class="form-control"/>
+          <input type="password" id="password" class="form-control" name="password" [(ngModel)]="credentials.password"/>
       </div>
-      <button id="login-btn" routerLink="/admin/edit" class="btn btn-primary">LOGIN</button>
+      <button id="login-btn" type="submit" class="btn btn-primary">LOGIN</button>
   </form>
 </main>

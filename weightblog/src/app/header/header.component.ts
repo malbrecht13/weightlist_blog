@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { Router, Event, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,7 @@ import { Router, Event, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   areHamburgerLinksVisible: boolean = false;
+  adminIsLoggedIn: boolean = false;
 
   publicBlogLinks = [
     {href: '', linkName: 'Blog Posts'}, 
@@ -22,20 +24,23 @@ export class HeaderComponent implements OnInit {
     {href: '/admin/login', linkName: 'Sign Out'}
   ];
 
-  navLinks: any;
+  navLinks?: any[];
 
   faBars = faBars;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd) {
         this.areHamburgerLinksVisible = false;
-        console.log(this.router.url);
         if(this.router.url.search(/admin/) !== -1) {
-          this.navLinks = this.adminLinks;
-          this.adminLinks[2].linkName = this.router.url === '/admin/login' ? 'Admin Login' : 'Sign Out';
+          if(this.isLoggedIn()) {
+            this.navLinks = this.adminLinks;
+            this.adminLinks[2].linkName = this.router.url === '/admin/login' ? 'Admin Login' : 'Sign Out';
+          } else {
+            this.navLinks = [];
+          }
         } else {
           this.navLinks = this.publicBlogLinks;
         }
@@ -46,6 +51,20 @@ export class HeaderComponent implements OnInit {
 
   clickedHamburger():void {
     this.areHamburgerLinksVisible = !this.areHamburgerLinksVisible;
+  }
+
+  public doLogout(): void {
+    this.authService.logout();
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  onClickSignOut(linkName: string): void {
+    if(linkName === 'Sign Out') {
+      this.doLogout();
+    }
   }
 
 }

@@ -1,9 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
 // const hbs = require('hbs');
 const fs = require('fs/promises');
+const passport = require('passport');
 require('../app_api/models/db');
+require('../app_api/config/passport');
 const PORT = process.env.PORT || 3000;
 
 const apiRouter = require('../app_api/routes/index');
@@ -34,10 +37,17 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 // app.use(express.static(publicPath));
 app.use(express.static(angularBuildPath));
+app.use(passport.initialize());
+app.use((err, req, res, next) => {
+  if(err.name === 'UnauthorizedError') {
+    res.status(401).json({"message": err.name + ": " + err.message});
+  }
+  next();
+})
 app.use('/api', (req,res,next) => {
   res.header('Access-Control-Allow-Origin', 'https://shielded-bayou-85397.herokuapp.com/api/posts');
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
   next();
 });

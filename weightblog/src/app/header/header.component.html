@@ -8,7 +8,7 @@
 
   <div id="main_nav_top" class="display-none" [ngClass]="{'display-block': areHamburgerLinksVisible }">
       <ul class="header-right-nav-list flex-col" *ngFor="let link of navLinks">
-        <a class="nav_link_div" [routerLink]="link.href" (click)="clickedHamburger()">
+        <a class="nav_link_div" [routerLink]="link.href" (click)="onClickSignOut(link.linkName)">
           <li class="nav_link" >
             {{link.linkName}}
           </li>

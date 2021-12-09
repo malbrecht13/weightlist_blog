@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
 import { environment } from '../../environments/environment';
+import { User } from '../user';
+import { Authresponse } from '../authresponse';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,6 +19,15 @@ export class PostService {
   private apiBaseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
+
+  public login(user: User): Observable<Authresponse> {
+    return this.makeAuthApiCall('login', user);
+  }
+
+  private makeAuthApiCall(urlPath: string, user: User): Observable<Authresponse> {
+    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    return this.http.post(url,user);
+  }
 
   getAllPosts(): Observable<Post[]>{
     const url = `${this.apiBaseUrl}/posts`;
