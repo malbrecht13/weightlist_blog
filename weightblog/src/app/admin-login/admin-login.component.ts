@@ -21,6 +21,9 @@ export class AdminLoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/admin/edit');
+    }
    
   }
 
