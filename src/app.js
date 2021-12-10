@@ -141,8 +141,6 @@ app.use('/api', apiRouter);
 //     });
 // });
 
-console.log(path.join(angularBuildPath, '/index.html'));
-
 app.use('/*', function(req, res) {
   res.sendFile(path.join(angularBuildPath, '/index.html'));
 });

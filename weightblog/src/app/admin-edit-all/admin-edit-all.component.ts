@@ -31,7 +31,7 @@ export class AdminEditAllComponent implements OnInit {
     const confirmed = confirm('Are you sure you want to delete this post?');
     if(confirmed) {
       this.postService.deletePost(id).subscribe();
-      this.router.navigate([this.router.url]);
+      location.reload();
     }
   }
 }
