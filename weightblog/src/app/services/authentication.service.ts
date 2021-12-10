@@ -48,7 +48,7 @@ export class AuthenticationService {
     this.storage.setItem('weightblog-token', token);
   }
 
-  public getToken(): string {
+  getToken(): string {
     return JSON.stringify(this.storage.getItem('weightblog-token'));
   }
 }

@@ -11,6 +11,7 @@ const register = (req,res) => {
   user.setPassword(req.body.password);
   user.save((err) => {
     if(err) {
+      console.log(err);
       res.status(404).json(err);
     } else {
       const token = user.generateJwt();

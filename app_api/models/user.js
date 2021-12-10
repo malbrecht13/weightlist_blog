@@ -18,8 +18,8 @@ userSchema.methods.setPassword = function(password) {
 }
 
 userSchema.methods.validPassword = function(password) {
-  const hash = crypto.pbkdf2Sync(password, this.salt, 100, 64, 'sha512').toString('hex');
-  return this.hash = hash;
+  const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+  return this.hash === hash;
 }
 
 userSchema.methods.generateJwt = function() {

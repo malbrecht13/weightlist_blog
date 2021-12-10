@@ -12,13 +12,13 @@ const ctrlAuth = require('../controllers/authentication');
 router
   .route('/posts')
   .get(ctrlPosts.getPosts)
-  .post(auth, ctrlPosts.createPost);
+  .post(ctrlPosts.createPost);
 
 router
   .route('/posts/:postId')
   .get(ctrlPosts.readOnePost)
-  .put(auth, ctrlPosts.updatePost)
-  .delete(auth, ctrlPosts.deletePost);
+  .put(ctrlPosts.updatePost)
+  .delete(ctrlPosts.deletePost);
 
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);

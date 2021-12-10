@@ -35,11 +35,14 @@ export class AdminLoginComponent implements OnInit {
 
   private doLogin(): void{
     this.authService.login(this.credentials);
-    if(this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/admin/edit');
-    } else {
-      this.formError = 'Incorrect credentials entered.';
-    }
+    setTimeout(() => {
+      if(this.authService.isLoggedIn()) {
+        this.router.navigateByUrl('/admin/edit');
+      } else {
+        this.formError = 'Incorrect credentials entered.';
+      }
+
+    }, 500);
   }
 
 }

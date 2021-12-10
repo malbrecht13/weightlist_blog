@@ -141,6 +141,16 @@ table {
   margin-top: 20px;
 }
 
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
 /* Media Queries */
 @media only screen and (min-width: 768px) {
   html {
