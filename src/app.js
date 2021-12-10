@@ -141,8 +141,9 @@ app.use('/api', apiRouter);
 //     });
 // });
 
-app.use('*', function(req, res) {
-  res.sendFile('../weightblog/build/assets/index.html');
+app.use('/*', function(req, res) {
+  console.log('here');
+  res.sendFile(path.join(__dirname, angularBuildPath + '/index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
