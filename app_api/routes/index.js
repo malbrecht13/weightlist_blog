@@ -20,7 +20,7 @@ router
   .put(ctrlPosts.updatePost)
   .delete(ctrlPosts.deletePost);
 
-// router.post('/register', ctrlAuth.register);
+router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
 module.exports = router;
