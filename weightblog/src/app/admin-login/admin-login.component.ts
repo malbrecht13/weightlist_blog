@@ -22,6 +22,7 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authService.isLoggedIn()) {
+      console.log('Already logged in');
       this.router.navigateByUrl('/admin/edit');
     }
    

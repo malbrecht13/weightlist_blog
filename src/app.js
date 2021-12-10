@@ -17,8 +17,8 @@ const angularBuildPath = path.join(__dirname, '../weightblog', 'build');
 // const viewsPath = path.join(__dirname, '../templates/views');
 // const partialsPath = path.join(__dirname, '../templates/partials');
 
-const publicBlogLinks = [{href: '/', linkName: 'Blog Posts'}, {href: '/about', linkName: 'About Weightlist'}];
-const adminLinks = [{href: '/admin/add', linkName: 'Add Post'}, {href: '/admin/edit', linkName: 'Edit Posts'}, {href: '/admin', linkName: 'Sign Out'}];
+// const publicBlogLinks = [{href: '/', linkName: 'Blog Posts'}, {href: '/about', linkName: 'About Weightlist'}];
+// const adminLinks = [{href: '/admin/add', linkName: 'Add Post'}, {href: '/admin/edit', linkName: 'Edit Posts'}, {href: '/admin', linkName: 'Sign Out'}];
 
 //Set up handlebars
 // app.set('view engine', 'hbs');
