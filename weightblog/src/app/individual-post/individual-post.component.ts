@@ -37,7 +37,7 @@ export class IndividualPostComponent implements OnInit {
   dateFromObjectId(objectId: string): string {
     const date = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
     const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-    return `${month}/${day}/${year}`;
+    return `${month + 1}/${day}/${year}`;
   };
 
 }

@@ -24,7 +24,7 @@ export class AllPostsComponent implements OnInit {
   dateFromObjectId(objectId: string): string {
     const date = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
     const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-    const stringDate = `${month}/${day}/${year}`;
+    const stringDate = `${month + 1}/${day}/${year}`;
     return stringDate;
   };
 
