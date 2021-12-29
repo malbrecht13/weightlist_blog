@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
+import { faBars} from '@fortawesome/free-solid-svg-icons/faBars';
+import {faCommentMedical } from '@fortawesome/free-solid-svg-icons/faCommentMedical';
 import { Router, Event, NavigationEnd } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
   navLinks?: any[];
 
   faBars = faBars;
+  faCommentMedical = faCommentMedical;
 
   constructor(private router: Router, private authService: AuthenticationService) { }
 
