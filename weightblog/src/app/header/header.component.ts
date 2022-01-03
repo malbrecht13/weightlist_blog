@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   publicBlogLinks = [
     {href: '', linkName: 'Blog Posts'}, 
-    {href: 'about', linkName: 'About Weightlist'},
+    {href: 'about', linkName: 'About'},
     {href: 'admin/login', linkName: 'Admin Login'}
   ];
 
