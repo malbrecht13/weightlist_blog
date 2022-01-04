@@ -44,15 +44,16 @@ app.use((err, req, res, next) => {
   }
   next();
 })
-app.use('/api', (req,res,next) => {
-  res.header('Access-Control-Allow-Origin', 'https://brightmdblog.com');
-  res.header('Access-Control-Allow-Origin', 'https://www.brightmdblog.com');
-  // res.header('Access-Control-Allow-Origin', 'https://shielded-bayou-85397.herokuapp.com/api/posts');
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  next();
-});
+// app.use('/api', (req,res,next) => {
+//   res.header('Access-Control-Allow-Origin', 'https://brightmdblog.com');
+//   res.header('Access-Control-Allow-Origin', 'https://www.brightmdblog.com');
+//   // res.header('Access-Control-Allow-Origin', 'https://shielded-bayou-85397.herokuapp.com/api/posts');
+//   // res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+//   next();
+// });
+app.use(cors());
 app.use('/api', apiRouter);
 // app.use('/', appRouter);
 
