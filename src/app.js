@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 // const hbs = require('hbs');
 const fs = require('fs/promises');
 const passport = require('passport');
