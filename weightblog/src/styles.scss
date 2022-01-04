@@ -21,7 +21,7 @@ li {
 
 main {
   min-height: 80vh;
-  padding: 20px 20%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -58,7 +58,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  min-width: 50%;
+  min-width: 80vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -153,6 +153,11 @@ th, td {
 
 .blog_post_link {
   color: black !important;
+  text-decoration: underline;
+
+  &:hover {
+    color: blue !important;
+  }
 }
 
 /* Media Queries */
